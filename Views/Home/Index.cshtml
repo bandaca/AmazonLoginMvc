@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="amazon-root"></div>
+ <script type="text/javascript">
+
+    window.onAmazonLoginReady = function() {
+      amazon.Login.setClientId('amzn1.application-oa2-client.b16223dc11ee4cd3bd4b01ada15d11e1');
+    };
+    (function(d) {
+      var a = d.createElement('script'); a.type = 'text/javascript';
+      a.async = true; a.id = 'amazon-login-sdk';
+      a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+      d.getElementById('amazon-root').appendChild(a);
+    })(document);
+
+</script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div>
+        <a href id="LoginWithAmazon">
+    <img border="0" alt="Login with Amazon"
+        src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
+        width="156" height="32" />
+ </a>
+ <script type="text/javascript">
+    document.getElementById('LoginWithAmazon').onclick = function() {
+        options = {}
+        options.scope = 'profile';
+        options.response_type='code';
+        options.scope_data = {
+            'profile' : {'essential': false} 
+        };
+        amazon.Login.authorize(options,
+            'https://d1b71fc1c1fb.ngrok.io/Return');
+        return false;
+    };
+</script>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Return";
+}
+
+<div id="amazon-root"></div>
+ <script type="text/javascript">
+
+    window.onAmazonLoginReady = function() {
+      amazon.Login.setClientId('amzn1.application-oa2-client.b16223dc11ee4cd3bd4b01ada15d11e1');
+    };
+    (function(d) {
+      var a = d.createElement('script'); a.type = 'text/javascript';
+      a.async = true; a.id = 'amazon-login-sdk';
+      a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+      d.getElementById('amazon-root').appendChild(a);
+    })(document);
+
+</script>
+
+<div>Returned</div>
+<div>@ViewData["ReturnParams"]ReturnParams</div>
+
+<a id="Logout" href="#">Logout</a> 
+
+<script type="text/javascript">
+  document.getElementById('Logout').onclick = function() { 
+      alert('Logout');
+     amazon.Login.logout();
+  };
+</script>
