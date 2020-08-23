@@ -32,6 +32,7 @@ namespace AmazonLoginMvc.Controllers
 
         public IActionResult Privacy()
         {
+            //test
             return View();
         }
 
